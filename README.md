@@ -1,1 +1,1 @@
-# Connvolution-algo-implmentation
+# Convolutional-algo-implmentation
