@@ -15,7 +15,7 @@ dzdy = [-2 4 1 -3 -2; 3 1 -1 3 -2; -1 -2 -3 5 4];
 Y = forw_conv(X,w,bias);
 
 %computing the backprop derivatives analytically 
-[dzdx, dzdw, dzdb] = back_conv(X, w, bias, Y, dzdy);
+[dzdx, dzdw, dzdb];% = back_conv(X, w, bias, Y, dzdy);
 
 %now compute them by using numerical derivatives 
 

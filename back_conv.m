@@ -17,8 +17,17 @@ zpadx((rr+(1:size(xmat,1))-1),cc+(1:size(xmat,2))-1) = xmat;
 %compute derivatives with respect to elements of wfilt
 %use convolution matrix M such that vecy = M * vec(wfilt) + b where * is
 %matrix multiply 
-
+fprintf('Padded X matrix zpadx\n');
+size(zpadx)
+zpadx
 M = im2col(zpadx,size(wfilt),'sliding')';
+fprintf('Padded X matrix M\n');
+M
+size(M)
+fprintf('Derivated with dzdy\n');
+M' * dzdy(:)
+size(M')
+size(dzdy(:))
 dzdw = reshape(M' * dzdy(:), size(wfilt));
 
 %compute derivatives with respect to elements of xmat
@@ -27,6 +36,8 @@ dzdw = reshape(M' * dzdy(:), size(wfilt));
 %lazy and compute it a slow, exhaustive way by putting the filter in all
 %2D locations one-by-one and reading that out as the next row of M
 M = zeros(prod(size(ymat)),prod(size(xmat)));
+fprintf('New M\n');
+size(M)
 tmpmat = zeros(size(zpadx));
 tmpmat(1:size(wfilt,1),1:size(wfilt,2)) = wfilt;
 i = 1;
